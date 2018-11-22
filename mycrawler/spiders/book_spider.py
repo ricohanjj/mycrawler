@@ -10,8 +10,8 @@ class BooksSpider(scrapy.Spider):
         item = Article_DetailItem()
         article_list = response.xpath('//article[@class="product_pod"]')
         for article in article_list:
-            title = article.xpath('./h3/a/text()').extract()
-            price  = article.xpath('./div[@class="product_price"]/p[@class="price_color"]/text()').extract()
+            title = article.xpath('./h3/a/text()').extract_first()
+            price  = article.xpath('./div[@class="product_price"]/p[@class="price_color"]/text()').extract_first()
 
             item['title'] = title
             item['price'] = price
